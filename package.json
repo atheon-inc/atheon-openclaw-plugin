@@ -1,0 +1,53 @@
+{
+  "name": "@atheon-inc/openclaw-plugin",
+  "version": "0.1.0-dev.1",
+  "description": "Atheon OpenClaw analytics plugin",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atheon-inc/atheon-openclaw-plugin.git"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@atheon-inc/codex": "^1.0"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5",
+    "esbuild": "^0.27",
+    "typescript": "^6.0"
+  },
+  "versioning": {
+    "files": [
+      "src/index.ts:__version__"
+    ]
+  },
+  "keywords": [
+    "atheon",
+    "openclaw",
+    "plugin",
+    "analytics"
+  ],
+  "author": "Saurabh Ghanekar <saurabh@atheon.ad>",
+  "license": "Apache-2.0"
+}
