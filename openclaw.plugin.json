@@ -1,0 +1,24 @@
+{
+    "id": "atheon-openclaw",
+    "name": "atheon",
+    "description": "Export LLM, Tools and SubAgent analytics to Atheon using atheon-codex",
+    "kind": "feature",
+    "configSchema": {
+        "type": "object",
+        "properties": {
+            "apiKey": {
+                "type": "string",
+                "description": "Your Atheon Project API Key"
+            }
+        },
+        "required": [
+            "apiKey"
+        ]
+    },
+    "uiHints": {
+        "apiKey": {
+            "label": "Atheon API Key",
+            "sensitive": true
+        }
+    }
+}
