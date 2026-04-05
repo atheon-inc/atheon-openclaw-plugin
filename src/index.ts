@@ -3,6 +3,7 @@ import { emptyPluginConfigSchema } from "openclaw/plugin-sdk";
 import { parseRawConfigIntoAtheonCodexClientOptions } from "./utils.js";
 import { createAtheonCodexService } from "./service.js";
 import { SessionRegistry } from "./session_registry.js";
+import { registerLlmHooks } from "./hooks/llm.js";
 
 export const __version__ = "0.1.0-dev.1";
 
@@ -40,6 +41,11 @@ export default definePluginEntry({
       }
     });
 
+    registerLlmHooks({
+      api,
+      registry,
+      logger: { warn: (msg) => api.logger.warn(msg) },
+    });
 
     api.on("session_end", (_event, ctx) => {
       const sessionKey = ctx.sessionKey;
