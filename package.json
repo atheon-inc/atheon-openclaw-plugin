@@ -1,6 +1,6 @@
 {
   "name": "@atheon-inc/openclaw-plugin",
-  "version": "0.1.0-dev.1",
+  "version": "0.1.0",
   "description": "Atheon OpenClaw analytics plugin",
   "publishConfig": {
     "access": "public"

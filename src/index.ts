@@ -7,7 +7,7 @@ import { registerLlmHooks } from "./hooks/llm.js";
 import { registerToolHooks } from "./hooks/tool.js";
 import { registerSubagentHooks } from "./hooks/subagent.js";
 
-export const __version__ = "0.1.0-dev.1";
+export const __version__ = "0.1.0";
 
 export default definePluginEntry({
   id: "atheon-openclaw",
