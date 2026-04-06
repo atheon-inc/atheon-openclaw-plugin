@@ -7,7 +7,7 @@ import { registerLlmHooks } from "./hooks/llm.js";
 import { registerToolHooks } from "./hooks/tool.js";
 import { registerSubagentHooks } from "./hooks/subagent.js";
 
-export const __version__ = "0.1.0";
+export const __version__ = "0.1.1";
 
 export default definePluginEntry({
   id: "atheon-openclaw",
@@ -20,8 +20,16 @@ export default definePluginEntry({
       api.pluginConfig,
     );
 
-    const REAPER_INTERVAL_MS = 5 * 60 * 1000;
-    const MAX_IDLE_TIME_MS = 60 * 60 * 1000;
+    const REAPER_INTERVAL_MS =
+      typeof api.pluginConfig?.reaperIntervalMs === "number" &&
+      !Number.isNaN(api.pluginConfig.reaperIntervalMs)
+        ? api.pluginConfig.reaperIntervalMs
+        : 5 * 60 * 1000;
+    const MAX_IDLE_TIME_MS =
+      typeof api.pluginConfig?.maxEventIdleTimeMs === "number" &&
+      !Number.isNaN(api.pluginConfig.maxEventIdleTimeMs)
+        ? api.pluginConfig.maxEventIdleTimeMs
+        : 60 * 60 * 1000;
 
     const registry = new SessionRegistry(api.logger, {
       maxIdleTimeMs: MAX_IDLE_TIME_MS,

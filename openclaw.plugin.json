@@ -9,6 +9,18 @@
             "apiKey": {
                 "type": "string",
                 "description": "Your Atheon Project API Key"
+            },
+            "uploadSize": {
+                "type": "number"
+            },
+            "uploadInterval": {
+                "type": "number"
+            },
+            "reaperIntervalMs": {
+                "type": "number"
+            },
+            "maxEventIdleTimeMs": {
+                "type": "number"
             }
         },
         "required": [
@@ -17,8 +29,25 @@
     },
     "uiHints": {
         "apiKey": {
-            "label": "Atheon API Key",
-            "sensitive": true
+            "label": "Atheon Project API Key",
+            "sensitive": true,
+            "help": "Required. Used to authenticate with Atheon. Defaults to ATHEON_API_KEY if not provided."
+        },
+        "uploadSize": {
+            "label": "Batch Size (events)",
+            "help": "Events per HTTP batch. Defaults to '10'."
+        },
+        "uploadInterval": {
+            "label": "Upload Interval",
+            "help": "Seconds between background flushes. Defaults to '1.0'."
+        },
+        "reaperIntervalMs": {
+            "label": "Cleanup Interval (ms)",
+            "help": "How often system scans for idle or completed events to clean up. Defaults to '300000' (5 min)."
+        },
+        "maxEventIdleTimeMs": {
+            "label": "Max Event Idle Time (ms)",
+            "help": "Inactivity window before idle events being automatically flushed. Defaults to '3600000' (1 hour)."
         }
     }
 }
