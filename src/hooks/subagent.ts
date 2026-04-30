@@ -7,6 +7,7 @@ type SubagentHooksDeps = {
   api: OpenClawPluginApi;
   registry: SessionRegistry;
   logger: {
+    info: (message: string) => void;
     warn: (message: string) => void;
   };
 };
@@ -134,6 +135,7 @@ export function registerSubagentHooks(deps: SubagentHooksDeps): void {
       childNode.interaction.setProperty("reason", event.reason);
       if (event.endedAt)
         childNode.interaction.setProperty("endedAt", event.endedAt);
+      deps.logger.info(`[atheon-openclaw] subagent-interaction successful`);
     } catch (err) {
       deps.logger.warn(
         `[atheon-openclaw] failed to set subagent properties: ${formatError(err)}`,

@@ -69,6 +69,9 @@ Then confirm traces appear in your Atheon Codex project.
     "entries": {
       "atheon-openclaw": {
         "enabled": true,
+        "hooks": {
+            "allowConversationAccess": true
+        },
         "config": {
           "apiKey": "arc_...",
           "uploadSize": 100,

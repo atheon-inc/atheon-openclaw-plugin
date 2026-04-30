@@ -14,6 +14,7 @@ type LlmHooksDeps = {
   api: OpenClawPluginApi;
   registry: SessionRegistry;
   logger: {
+    info: (message: string) => void;
     warn: (message: string) => void;
   };
 };
@@ -171,6 +172,9 @@ export function registerLlmHooks(deps: LlmHooksDeps): void {
 
     try {
       (node.interaction as Interaction).finish(finishArgs);
+      deps.logger.info(
+        `[atheon-openclaw] root-interaction successful (sessionKey=${sessionKey})`,
+      );
     } catch (err) {
       deps.logger.warn(
         `[atheon-openclaw] interaction finish failed (sessionKey=${sessionKey}): ${formatError(err)}`,

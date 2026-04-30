@@ -8,6 +8,7 @@ type ToolHooksDeps = {
   api: OpenClawPluginApi;
   registry: SessionRegistry;
   logger: {
+    info: (message: string) => void;
     warn: (message: string) => void;
   };
 };
@@ -105,6 +106,9 @@ export function registerToolHooks(deps: ToolHooksDeps): void {
 
     try {
       node.interaction.addToolExecution(record);
+      deps.logger.info(
+        `[atheon-openclaw] addToolExecution successful (tool=${toolName})`,
+      );
     } catch (err) {
       deps.logger.warn(
         `[atheon-openclaw] addToolExecution failed (tool=${toolName}): ${formatError(err)}`,
