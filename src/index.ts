@@ -7,7 +7,7 @@ import { registerLlmHooks } from "./hooks/llm.js";
 import { registerToolHooks } from "./hooks/tool.js";
 import { registerSubagentHooks } from "./hooks/subagent.js";
 
-export const __version__ = "0.1.2";
+export const __version__ = "0.1.1";
 
 export default definePluginEntry({
   id: "atheon-openclaw",
@@ -54,19 +54,28 @@ export default definePluginEntry({
     registerLlmHooks({
       api,
       registry,
-      logger: { warn: (msg) => api.logger.warn(msg) },
+      logger: {
+        info: (msg) => api.logger.info(msg),
+        warn: (msg) => api.logger.warn(msg),
+      },
     });
 
     registerToolHooks({
       api,
       registry,
-      logger: { warn: (msg) => api.logger.warn(msg) },
+      logger: {
+        info: (msg) => api.logger.info(msg),
+        warn: (msg) => api.logger.warn(msg),
+      },
     });
 
     registerSubagentHooks({
       api,
       registry,
-      logger: { warn: (msg) => api.logger.warn(msg) },
+      logger: {
+        info: (msg) => api.logger.info(msg),
+        warn: (msg) => api.logger.warn(msg),
+      },
     });
 
     api.on("session_end", (_event, ctx) => {
